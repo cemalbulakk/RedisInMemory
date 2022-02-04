@@ -16,28 +16,36 @@ namespace InMemoryApp.Web.Controllers
         public IActionResult Index()
         {
             // 1. Yol
-            if (string.IsNullOrEmpty(_memoryCache.Get<string>("zaman")))
-            {
-                _memoryCache.Set("zaman", DateTime.Now.ToString("F"));
-            }
+            //if (string.IsNullOrEmpty(_memoryCache.Get<string>("zaman")))
+            //{
+            //    _memoryCache.Set("zaman", DateTime.Now.ToString("F"));
+            //}
 
             // 2. Yol
-            if (!_memoryCache.TryGetValue("zaman", out string zamanCache))
+            //if (!_memoryCache.TryGetValue("zaman", out string zamanCache))
+            //{
+            MemoryCacheEntryOptions options = new MemoryCacheEntryOptions
             {
-                _memoryCache.Set("zaman", DateTime.Now.ToString("F"));
-            }
+                AbsoluteExpiration = DateTime.Now.AddMinutes(1), //Bayat data ile karşılamamak için ikisini aynı anda kullan.
+                SlidingExpiration = TimeSpan.FromSeconds(10)
+            };
+
+            _memoryCache.Set("zaman", DateTime.Now.ToString("F"), options);
+            //}
 
             return View();
         }
 
         public IActionResult Show()
         {
-            _memoryCache.GetOrCreate<string>("zaman", x => DateTime.Now.ToString("F"));
-
-
+            //_memoryCache.GetOrCreate<string>("zaman", x => DateTime.Now.ToString("F"));
             //_memoryCache.Remove("zaman");
 
-            ViewBag.zaman = _memoryCache.Get<string>("zaman");
+            _memoryCache.TryGetValue("zaman", out string zamanCache);
+
+            ViewBag.zaman = zamanCache;
+
+            //ViewBag.zaman = _memoryCache.Get<string>("zaman");
             return View();
         }
     }
