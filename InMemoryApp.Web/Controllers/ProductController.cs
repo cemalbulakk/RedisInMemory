@@ -1,4 +1,5 @@
 ﻿using System;
+using InMemoryApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -39,6 +40,15 @@ namespace InMemoryApp.Web.Controllers
             _memoryCache.Set("zaman", DateTime.Now.ToString("F"), options);
             //}
 
+            var product = new Product()
+            {
+                Id = 1,
+                Name = "Kalem",
+                Price = 10
+            };
+
+            _memoryCache.Set<Product>("product:1", product);
+
             return View();
         }
 
@@ -49,8 +59,10 @@ namespace InMemoryApp.Web.Controllers
 
             _memoryCache.TryGetValue("zaman", out string zamanCache);
             _memoryCache.TryGetValue("callback", out string callback);
+            _memoryCache.TryGetValue("product:1", out Product product);
             ViewBag.zaman = zamanCache;
             ViewBag.callback = callback;
+            ViewBag.product = product;
 
             //ViewBag.zaman = _memoryCache.Get<string>("zaman");
             return View();
