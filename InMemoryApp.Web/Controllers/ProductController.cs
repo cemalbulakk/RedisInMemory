@@ -27,7 +27,8 @@ namespace InMemoryApp.Web.Controllers
             MemoryCacheEntryOptions options = new MemoryCacheEntryOptions
             {
                 AbsoluteExpiration = DateTime.Now.AddMinutes(1), //Bayat data ile karşılamamak için ikisini aynı anda kullan.
-                SlidingExpiration = TimeSpan.FromSeconds(10)
+                SlidingExpiration = TimeSpan.FromSeconds(10),
+                Priority = CacheItemPriority.High
             };
 
             _memoryCache.Set("zaman", DateTime.Now.ToString("F"), options);
