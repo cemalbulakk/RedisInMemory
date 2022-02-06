@@ -1,8 +1,33 @@
-﻿@{
+﻿@model Product
+
+@{
     ViewBag.Title = "Show";
     Layout = "_Layout";
 }
 
 <h2>Show</h2>
 
-<h3>@ViewBag.name</h3>
+<h3>@ViewBag.product1</h3>
+<h3>@ViewBag.product2</h3>
+
+
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Price</td>
+        </tr>
+    </tbody>
+
+
+</table>
