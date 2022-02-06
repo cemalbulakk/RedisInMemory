@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -65,6 +66,26 @@ namespace IDistributedCacheRedisApp.Web.Controllers
             _distributedCache.Remove("name");
 
             return View();
+        }
+
+        public IActionResult ImageCache()
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/image/car.jpg");
+
+            var imgByte = System.IO.File.ReadAllBytes(path);
+
+            _distributedCache.Set("image", imgByte);
+
+            return View();
+        }
+
+        public IActionResult ImageUrl()
+        {
+            var img = _distributedCache.Get("image");
+
+            return File(img, "image/jpg");
+
+            //return View();
         }
     }
 }
