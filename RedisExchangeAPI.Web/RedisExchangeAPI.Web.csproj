@@ -18,12 +18,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\SetType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\ListType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\StringType\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\ListType\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SetType\Index.cshtml" />
   </ItemGroup>
 
 </Project>

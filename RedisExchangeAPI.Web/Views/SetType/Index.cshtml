@@ -1,0 +1,23 @@
+﻿@model HashSet<string>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+}
+
+<form method="post" asp-action="Add" enctype="applicaton/x-www-form-urlencoded">
+    <input type="text" name="name" />
+    <button type="submit">Kaydet</button>
+</form>
+
+<table class="table table-striped table-bordered table-hover">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+            <td>
+                <a class="btn btn-danger" asp-action="DeleteItem" asp-route-name="@item">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
