@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
@@ -17,7 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\ListType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\StringType\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ListType\Index.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,25 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+}
+
+<form method="post" asp-action="Add" enctype="applicaton/x-www-form-urlencoded">
+    <input type="text" name="name" />
+    <button type="submit">Kaydet</button>
+</form>
+
+<a asp-action="DeleteFirstItem" asp-controller="ListType">Baştan Sil</a>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+            <td>
+                <a asp-controller="ListType" asp-action="DeleteItem" asp-route-name="@item">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
