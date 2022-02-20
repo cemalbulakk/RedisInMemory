@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\SortedSetType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\SetType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\ListType\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\StringType\Index.cshtml" />
@@ -29,6 +30,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\SetType\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\SortedSetType\Index.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,24 @@
+﻿@model System.Collections.Generic.HashSet<string>
+
+@{
+    ViewBag.Title = "SortedSet";
+    Layout = "_Layout";
+}
+
+<form method="post" asp-action="Add" enctype="applicaton/x-www-form-urlencoded">
+    <input type="text" name="name" />
+    <input type="number" name="score"/>
+    <button type="submit">Kaydet</button>
+</form>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+            <td>
+                <a asp-controller="SortedSetType" asp-action="DeleteItem" asp-route-name="@item">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
