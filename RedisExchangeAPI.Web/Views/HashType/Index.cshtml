@@ -1,0 +1,25 @@
+﻿@model System.Collections.Generic.Dictionary<string,string>
+
+@{
+    Layout = "_Layout";
+}
+
+<form method="post" asp-action="Add" enctype="applicaton/x-www-form-urlencoded">
+    <input type="text" name="name" />
+    <input type="text" name="val" />
+    <button type="submit">Kaydet</button>
+</form>
+
+<a asp-action="DeleteFirstItem" asp-controller="HashType">Baştan Sil</a>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+            <td>
+                <a asp-controller="HashType" asp-action="DeleteItem" asp-route-name="@item.Key">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
